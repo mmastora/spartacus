@@ -6,6 +6,7 @@ import { PageType } from '../../model';
 import { ProductSearchService } from '../../product/facade/product-search.service';
 import { ProductService } from '../../product/facade/product.service';
 import { createFrom } from '../../util';
+import { RoutingConfigService } from '../configurable-routes/routing-config.service';
 import { RoutingService } from '../facade/routing.service';
 import { PageContext } from '../models/page-context.model';
 import {
@@ -33,7 +34,8 @@ export class RoutingEventBuilder {
     protected routingService: RoutingService,
     protected productSearchService: ProductSearchService,
     protected eventService: EventService,
-    protected productService: ProductService
+    protected productService: ProductService,
+    protected routingConfigService: RoutingConfigService
   ) {
     this.register();
   }
@@ -131,7 +133,19 @@ export class RoutingEventBuilder {
     );
   }
 
+  private genericRouteEvent(routeKey: string): Observable<PageContext> {
+    return this.routingService.getPageContext().pipe(
+      // TODO:#corey - test this by extending the configuration and adding a custom route
+      filter((pageContext) => {
+        const route = this.routingConfigService.getRouteConfig(routeKey);
+        return route && pageContext.cxRoute === routeKey;
+      })
+    );
+  }
+
   searchResultPageVisited(): Observable<KeywordSearchPageVisited> {
+    this.genericRouteEvent('search').subscribe((_) => console.log('is search'));
+
     return this.productSearchService.getResults().pipe(
       filter((searchResults) => Boolean(searchResults.breadcrumbs)),
       withLatestFrom(this.routingService.getPageContext()),

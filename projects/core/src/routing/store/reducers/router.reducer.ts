@@ -87,13 +87,16 @@ export class CustomSerializer
 
     let state: CmsActivatedRouteSnapshot = routerState.root as CmsActivatedRouteSnapshot;
     let cmsRequired = false;
+    let cxRoute: string;
     let context: PageContext;
 
     while (state.firstChild) {
       state = state.firstChild as CmsActivatedRouteSnapshot;
+      cxRoute = state.data.cxRoute;
 
       // we use context information embedded in Cms driven routes from any parent route
       if (state.data && state.data.cxCmsRouteContext) {
+        // TODO:#corey - where is the `state.data.cxCmsRouteContext` set? should this be updated?
         context = state.data.cxCmsRouteContext;
       }
 
@@ -118,28 +121,49 @@ export class CustomSerializer
       context = {
         id: 'smartedit-preview',
         type: PageType.CONTENT_PAGE,
+        cxRoute,
       };
     } else {
       if (params['productCode']) {
-        context = { id: params['productCode'], type: PageType.PRODUCT_PAGE };
+        context = {
+          id: params['productCode'],
+          type: PageType.PRODUCT_PAGE,
+          cxRoute,
+        };
       } else if (params['categoryCode']) {
-        context = { id: params['categoryCode'], type: PageType.CATEGORY_PAGE };
+        context = {
+          id: params['categoryCode'],
+          type: PageType.CATEGORY_PAGE,
+          cxRoute,
+        };
       } else if (params['brandCode']) {
-        context = { id: params['brandCode'], type: PageType.CATEGORY_PAGE };
+        context = {
+          id: params['brandCode'],
+          type: PageType.CATEGORY_PAGE,
+          cxRoute,
+        };
       } else if (state.data.pageLabel !== undefined) {
-        context = { id: state.data.pageLabel, type: PageType.CONTENT_PAGE };
+        // TODO:#corey - investigate this case
+        context = {
+          id: state.data.pageLabel,
+          type: PageType.CONTENT_PAGE,
+          cxRoute,
+        };
       } else if (!context) {
+        // TODO:#corey - investigate these cases
         if (state.url.length > 0) {
           const pageLabel =
             '/' + state.url.map((urlSegment) => urlSegment.path).join('/');
           context = {
             id: pageLabel,
             type: PageType.CONTENT_PAGE,
+            cxRoute,
           };
         } else {
           context = {
             id: 'homepage',
             type: PageType.CONTENT_PAGE,
+            cxRoute,
           };
         }
       }
