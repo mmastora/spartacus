@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ConfiguratorCommonsService, RoutingService } from '@spartacus/core';
 import { Observable, using } from 'rxjs';
-import { mapTo, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BreakpointService } from '../../../../layout/breakpoint/breakpoint.service';
 import { BREAKPOINT } from '../../../../layout/config/layout-config';
 import { ConfigurationRouter } from '../../generic/service/config-router-data';
@@ -30,7 +30,7 @@ export class ConfigOverviewLoadingComponent {
         switchMap((routerData) =>
           this.configuratorCommonsService.getConfiguration(routerData.owner)
         ),
-        mapTo(true)
+        map(Boolean)
       )
   );
 
