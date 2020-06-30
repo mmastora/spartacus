@@ -25,8 +25,6 @@ export class ConfigOverviewLoadingComponent {
     BREAKPOINT
   > = this.breakpointService.breakpoint$.pipe(
     tap((breakpoint) => (this.breakpoint = breakpoint))
-    // TODO: instead of the breakpoint, we could load an appropriate SVG here,
-    // and set it as a property of the component.
   );
 
   configuration$: Observable<Configurator.Configuration> = using(

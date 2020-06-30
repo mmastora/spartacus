@@ -1,20 +1,12 @@
 <ng-container *ngIf="!(configuration$ | async)">
   <ng-container [ngSwitch]="breakpoint">
     <div class="cx-config-loading-container">
-      <ng-container *ngSwitchCase="'xs'">
-        <ng-container *ngTemplateOutlet="mobile"></ng-container>
-      </ng-container>
-      <ng-container *ngSwitchCase="'sm'">
-        <ng-container *ngTemplateOutlet="tablet"></ng-container>
-      </ng-container>
-      <ng-container *ngSwitchDefault>
-        <ng-container *ngTemplateOutlet="laptop"></ng-container>
-      </ng-container>
+      <ng-container *ngTemplateOutlet="breakpoint"></ng-container>
     </div>
   </ng-container>
 </ng-container>
 
-<ng-template #mobile>
+<ng-template #xs>
   <svg
     id="cx-config-loading-svg-mobile"
     class="cx-config-loading-svg"
@@ -35,7 +27,7 @@
     </g>
   </svg>
 </ng-template>
-<ng-template #tablet>
+<ng-template #sm>
   <svg
     id="cx-config-loading-svg-tablet"
     class="cx-config-loading-svg"
@@ -58,7 +50,7 @@
     </g>
   </svg>
 </ng-template>
-<ng-template #laptop>
+<ng-template #lg>
   <svg
     id="cx-config-loading-svg-laptop"
     class="cx-config-loading-svg"
