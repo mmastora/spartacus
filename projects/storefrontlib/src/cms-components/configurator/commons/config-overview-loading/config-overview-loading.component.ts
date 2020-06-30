@@ -14,7 +14,6 @@ import { ConfigRouterExtractorService } from '../../generic/service/config-route
 @Component({
   selector: 'cx-config-overview-loading',
   templateUrl: './config-overview-loading.component.html',
-  styles: [],
 })
 export class ConfigOverviewLoadingComponent {
   breakpoint: BREAKPOINT;
