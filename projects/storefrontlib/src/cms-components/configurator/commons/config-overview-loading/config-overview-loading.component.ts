@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import {
-  Configurator,
-  ConfiguratorCommonsService,
-  RoutingService,
-} from '@spartacus/core';
+import { ConfiguratorCommonsService, RoutingService } from '@spartacus/core';
 import { Observable, using } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { mapTo, switchMap, tap } from 'rxjs/operators';
 import { BreakpointService } from '../../../../layout/breakpoint/breakpoint.service';
 import { BREAKPOINT } from '../../../../layout/config/layout-config';
 import { ConfigurationRouter } from '../../generic/service/config-router-data';
@@ -27,13 +23,14 @@ export class ConfigOverviewLoadingComponent {
     tap((breakpoint) => (this.breakpoint = breakpoint))
   );
 
-  configuration$: Observable<Configurator.Configuration> = using(
+  configuration$: Observable<boolean> = using(
     () => this.breakpoint$.subscribe(),
     () =>
       this.routerData$.pipe(
         switchMap((routerData) =>
           this.configuratorCommonsService.getConfiguration(routerData.owner)
-        )
+        ),
+        mapTo(true)
       )
   );
 

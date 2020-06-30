@@ -1,9 +1,7 @@
 <ng-container *ngIf="!(configuration$ | async)">
-  <ng-container [ngSwitch]="breakpoint">
-    <div class="cx-config-loading-container">
-      <ng-container *ngTemplateOutlet="breakpoint"></ng-container>
-    </div>
-  </ng-container>
+  <div class="cx-config-loading-container">
+    <ng-container *ngTemplateOutlet="breakpoint"></ng-container>
+  </div>
 </ng-container>
 
 <ng-template #xs>
