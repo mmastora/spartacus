@@ -6,8 +6,8 @@ import {
 } from '@spartacus/core';
 import { Observable, using } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { BREAKPOINT } from '../../../../layout';
 import { BreakpointService } from '../../../../layout/breakpoint/breakpoint.service';
+import { BREAKPOINT } from '../../../../layout/config/layout-config';
 import { ConfigurationRouter } from '../../generic/service/config-router-data';
 import { ConfigRouterExtractorService } from '../../generic/service/config-router-extractor.service';
 
