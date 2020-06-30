@@ -1,18 +1,16 @@
 <ng-container *ngIf="!(configuration$ | async)">
-  <ng-container *ngIf="breakpoint$ | async as breakpoint">
-    <ng-container [ngSwitch]="breakpoint">
-      <div class="cx-config-loading-container">
-        <ng-container *ngSwitchCase="'xs'">
-          <ng-container *ngTemplateOutlet="mobile"></ng-container>
-        </ng-container>
-        <ng-container *ngSwitchCase="'sm'">
-          <ng-container *ngTemplateOutlet="tablet"></ng-container>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <ng-container *ngTemplateOutlet="laptop"></ng-container>
-        </ng-container>
-      </div>
-    </ng-container>
+  <ng-container [ngSwitch]="breakpoint">
+    <div class="cx-config-loading-container">
+      <ng-container *ngSwitchCase="'xs'">
+        <ng-container *ngTemplateOutlet="mobile"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'sm'">
+        <ng-container *ngTemplateOutlet="tablet"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <ng-container *ngTemplateOutlet="laptop"></ng-container>
+      </ng-container>
+    </div>
   </ng-container>
 </ng-container>
 
