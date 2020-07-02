@@ -4,7 +4,7 @@ import { CmsConfig, ConfigModule } from '@spartacus/core';
 import {
   CmsPageGuard,
   ConfigAddToCartButtonComponent,
-  ConfigOverviewLoadingComponent,
+  ConfigLoadingModule,
   ConfigOverviewFormComponent,
   ConfigPriceSummaryComponent,
   ConfigTabBarComponent,
@@ -19,6 +19,7 @@ import {
  */
 @NgModule({
   imports: [
+    ConfigLoadingModule,
     RouterModule.forChild([
       {
         path:
@@ -37,9 +38,6 @@ import {
     ]),
     ConfigModule.withConfig(<CmsConfig>{
       cmsComponents: {
-        VariantConfigurationOverviewLoading: {
-          component: ConfigOverviewLoadingComponent,
-        },
         VariantConfigurationTabBar: {
           component: ConfigTabBarComponent,
         },

@@ -1,6 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ConfigLoadingComponent } from './config-loading.component';
 import {
   Configurator,
   ConfiguratorCommonsService,
@@ -9,9 +7,10 @@ import {
   RouterState,
   RoutingService,
 } from '@spartacus/core';
-import { Observable, of } from 'rxjs';
 import { BREAKPOINT, BreakpointService } from '@spartacus/storefront';
+import { Observable, of } from 'rxjs';
 import { ConfigComponentTestUtilsService } from '../../generic/service/config-component-test-utils.service';
+import { ConfigLoadingComponent } from './config-loading.component';
 
 const PRODUCT_CODE = 'CONF_LAPTOP';
 const URL_CONFIGURATION =
@@ -60,7 +59,7 @@ class MockBreakpointService {
   }
 }
 
-describe('ConfigLoadingComponent', () => {
+describe('ConfigOverviewLoadingComponent', () => {
   let classUnderTest: ConfigLoadingComponent;
   let fixture: ComponentFixture<ConfigLoadingComponent>;
   let htmlElem: HTMLElement;

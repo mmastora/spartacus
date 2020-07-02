@@ -28,6 +28,7 @@ import { ConfigAttributeSingleSelectionImageComponent } from '../commons/config-
 import { ConfigFormComponent } from '../commons/config-form/config-form.component';
 import { ConfigGroupMenuComponent } from '../commons/config-group-menu/config-group-menu.component';
 import { ConfigGroupTitleComponent } from '../commons/config-group-title/config-group-title.component';
+import { ConfigLoadingModule } from '../commons/config-loading/config-loading.module';
 import { ConfigurationMessageLoaderModule } from '../commons/config-message/config-message-loader.module';
 import { ConfigMessageComponent } from '../commons/config-message/config-message.component';
 import { ConfigPreviousNextButtonsComponent } from '../commons/config-previous-next-buttons/config-previous-next-buttons.component';
@@ -37,7 +38,6 @@ import { ConfigTabBarComponent } from '../commons/config-tab-bar/config-tab-bar.
 import { DefaultMessageConfig } from '../commons/config/default-message-config';
 import { MessageConfig } from '../commons/config/message-config';
 import { GenericConfiguratorModule } from '../generic/generic-configurator.module';
-import { ConfigLoadingComponent } from '../commons/config-loading/config-loading.component';
 
 @NgModule({
   imports: [
@@ -57,10 +57,11 @@ import { ConfigLoadingComponent } from '../commons/config-loading/config-loading
     I18nModule,
     IconModule,
     SpinnerModule,
+
+    ConfigLoadingModule,
   ],
 
   declarations: [
-    ConfigLoadingComponent,
     ConfigFormComponent,
     ConfigAttributeRadioButtonComponent,
     ConfigAttributeDropDownComponent,
@@ -82,7 +83,6 @@ import { ConfigLoadingComponent } from '../commons/config-loading/config-loading
     ConfigProductTitleComponent,
   ],
   exports: [
-    ConfigLoadingComponent,
     ConfigFormComponent,
     ConfigAttributeRadioButtonComponent,
     ConfigAttributeDropDownComponent,
@@ -105,7 +105,6 @@ import { ConfigLoadingComponent } from '../commons/config-loading/config-loading
   ],
   providers: [UserService, { provide: MessageConfig, useExisting: Config }],
   entryComponents: [
-    ConfigLoadingComponent,
     ConfigFormComponent,
     ConfigAttributeRadioButtonComponent,
     ConfigAttributeDropDownComponent,

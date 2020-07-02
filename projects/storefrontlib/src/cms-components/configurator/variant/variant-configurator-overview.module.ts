@@ -9,7 +9,6 @@ import { ConfigOverviewAttributeComponent } from '../commons/config-overview-att
 import { ConfigOverviewFormComponent } from '../commons/config-overview-form/config-overview-form.component';
 import { GenericConfiguratorModule } from '../generic/generic-configurator.module';
 import { VariantConfiguratorModule } from './variant-configurator.module';
-import { ConfigOverviewLoadingComponent } from '../commons/config-overview-loading/config-overview-loading.component';
 
 @NgModule({
   imports: [
@@ -25,19 +24,10 @@ import { ConfigOverviewLoadingComponent } from '../commons/config-overview-loadi
     RouterModule,
   ],
 
-  declarations: [
-    ConfigOverviewLoadingComponent,
-    ConfigOverviewFormComponent,
-    ConfigOverviewAttributeComponent,
-  ],
-  exports: [
-    ConfigOverviewLoadingComponent,
-    ConfigOverviewFormComponent,
-    ConfigOverviewAttributeComponent,
-  ],
+  declarations: [ConfigOverviewFormComponent, ConfigOverviewAttributeComponent],
+  exports: [ConfigOverviewFormComponent, ConfigOverviewAttributeComponent],
   providers: [UserService],
   entryComponents: [
-    ConfigOverviewLoadingComponent,
     ConfigOverviewFormComponent,
     ConfigOverviewAttributeComponent,
   ],

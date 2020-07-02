@@ -7,7 +7,7 @@ import {
   ConfigFormComponent,
   ConfigGroupMenuComponent,
   ConfigGroupTitleComponent,
-  ConfigLoadingComponent,
+  ConfigLoadingModule,
   ConfigPreviousNextButtonsComponent,
   ConfigPriceSummaryComponent,
   ConfigProductTitleComponent,
@@ -25,6 +25,8 @@ import {
 @NgModule({
   imports: [
     ProductModule,
+    ConfigLoadingModule,
+
     ConfigurationMessageLoaderModule,
     RouterModule.forChild([
       {
@@ -37,9 +39,6 @@ import {
     ConfigModule.withConfig(DefaultMessageConfig),
     ConfigModule.withConfig(<CmsConfig>{
       cmsComponents: {
-        VariantConfigurationLoading: {
-          component: ConfigLoadingComponent,
-        },
         VariantConfigurationTabBar: {
           component: ConfigTabBarComponent,
         },
