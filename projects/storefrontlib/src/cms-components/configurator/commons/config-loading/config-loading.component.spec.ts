@@ -59,7 +59,7 @@ class MockBreakpointService {
   }
 }
 
-describe('ConfigOverviewLoadingComponent', () => {
+describe('ConfigLoadingComponent', () => {
   let classUnderTest: ConfigLoadingComponent;
   let fixture: ComponentFixture<ConfigLoadingComponent>;
   let htmlElem: HTMLElement;
