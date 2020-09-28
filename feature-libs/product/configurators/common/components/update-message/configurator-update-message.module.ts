@@ -15,50 +15,6 @@ import { ConfiguratorUpdateMessageComponent } from './configurator-update-messag
   imports: [CommonModule, SpinnerModule, I18nModule],
   providers: [
     provideDefaultConfig(<CmsConfig>{
-      layoutSlots: {
-        VariantConfigurationTemplate: {
-          header: {
-            md: {
-              slots: [
-                'PreHeader',
-                'SiteContext',
-                'SiteLinks',
-                'SiteLogo',
-                'SearchBox',
-                'SiteLogin',
-                'MiniCart',
-              ],
-            },
-            xs: {
-              slots: ['PreHeader', 'SiteLogo', 'SearchBox', 'MiniCart'],
-            },
-          },
-
-          navigation: {
-            slots: [
-              'SiteLogin',
-              'SiteContext',
-              'SiteLinks',
-              'VariantConfigMenu',
-            ],
-          },
-
-          lg: {
-            slots: [
-              'VariantConfigHeader',
-              'VariantConfigMenu',
-              'VariantConfigContent',
-              'VariantConfigBottombar',
-            ],
-          },
-
-          slots: [
-            'VariantConfigHeader',
-            'VariantConfigContent',
-            'VariantConfigBottombar',
-          ],
-        },
-      },
       cmsComponents: {
         VariantConfigurationUpdateMessage: {
           component: ConfiguratorUpdateMessageComponent,
