@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
 import { MockFeatureDirective } from '../../shared/test/mock-feature-directive';
 import { StorefrontComponent } from './storefront.component';
 
-
 @Component({
   selector: 'cx-asm',
   template: '',
@@ -55,12 +54,11 @@ class MockSchemaComponent {}
 class MockPageLayoutComponent {}
 
 export class MockSVGInput implements SVGAnimatedString {
-
   animVal: string;
   baseVal: string;
 
-  constructor(aniVal: string, basVal: string){
-    this.animVal = aniVal; 
+  constructor(aniVal: string, basVal: string) {
+    this.animVal = aniVal;
     this.baseVal = basVal;
   }
 }
@@ -105,7 +103,6 @@ describe('StorefrontComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
   it('should contain start-navigating class', () => {
     spyOn(routingService, 'isNavigating').and.returnValue(of(true));
     fixture.detectChanges();
@@ -120,29 +117,24 @@ describe('StorefrontComponent', () => {
     expect(el.nativeElement.classList.contains('stop-navigating')).toBeTruthy();
     expect(el.nativeElement.classList.contains('start-navigating')).toBeFalsy();
   });
-  
 
   it('should collapse menu when SVG element is input', () => {
-    
     //Mock Input
     let svgDom: any = new MockSVGInput('is-expanded', 'is-expanded');
     let mockTarget = document.createElement('div') as HTMLDivElement;
     mockTarget['className'] = svgDom;
-   
+
     var mockEvent: any = new Object();
     mockEvent['target'] = mockTarget;
-    let mockInput : MouseEvent = mockEvent as MouseEvent;
-       
+    let mockInput: MouseEvent = mockEvent as MouseEvent;
+
     let expected: boolean = true;
 
-    //Act 
+    //Act
     component.collapseMenuIfClickOutside(mockInput);
-    
+
     //Assert
     component.isExpanded$.subscribe((result) => (expected = result));
     expect(expected).toBeFalsy();
   });
-  
-
-
 });
